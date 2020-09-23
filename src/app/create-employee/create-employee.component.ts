@@ -25,7 +25,7 @@ export class CreateEmployeeComponent implements OnInit {
   save() {
     this.employeeService.createEmployee(this.employee)
       .subscribe(data => this.employee = {
-        id: (data as any).id,
+        _id: (data as any)._id,
         firstname: (data as any).firstname,
         lastname: (data as any).lastname,
         email: (data as any).email,

@@ -26,10 +26,10 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.deleteEmployee(id)
       .subscribe(
         data => {
-          console.log("SERVICE CLASS-------- " + data);
+          console.log(data);
           this.reloadData();
         },
-        error => console.log("SERVICE CLASS-------- " + error));
+        error => console.log(error));
   }
 
 }
