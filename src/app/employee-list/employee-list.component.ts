@@ -19,17 +19,17 @@ export class EmployeeListComponent implements OnInit {
   }
 
   reloadData() {
-    this.employees = this.employeeService.getEmployeesList();
+    this.employeeService.getEmployeesList().subscribe(data => this.employees = data);
   }
 
   deleteEmployee(id: number) {
     this.employeeService.deleteEmployee(id)
       .subscribe(
         data => {
-          console.log(data);
+          console.log("SERVICE CLASS-------- "+data);
           this.reloadData();
         },
-        error => console.log(error));
+        error => console.log("SERVICE CLASS-------- "+error));
   }
 
 }
