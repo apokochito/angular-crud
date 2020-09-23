@@ -12,7 +12,7 @@ export class EmployeeListComponent implements OnInit {
 
   employees: Observable<Employee[]>;
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
     this.reloadData();
@@ -26,10 +26,10 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.deleteEmployee(id)
       .subscribe(
         data => {
-          console.log("SERVICE CLASS-------- "+data);
+          console.log("SERVICE CLASS-------- " + data);
           this.reloadData();
         },
-        error => console.log("SERVICE CLASS-------- "+error));
+        error => console.log("SERVICE CLASS-------- " + error));
   }
 
 }

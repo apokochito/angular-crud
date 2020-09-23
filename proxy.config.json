@@ -1,0 +1,8 @@
+{
+  "/api/v1/employees": {
+    "target": "https://aqueous-bastion-50396.herokuapp.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
