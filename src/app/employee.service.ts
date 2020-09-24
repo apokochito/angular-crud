@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Employee } from './employee';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +8,9 @@ import { Employee } from './employee';
 export class EmployeeService {
 
   data: number;
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   setEmployeeFromSibling(id: number) {
     this.data = id;
@@ -32,7 +33,7 @@ export class EmployeeService {
   }
 
   updateEmployee(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/${id}`, value);
+    return this.http.put(`${this.baseUrl}/${id}`, value, this.httpOptions);
   }
 
   deleteEmployee(id: number): Observable<any> {
