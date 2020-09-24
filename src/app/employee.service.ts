@@ -1,11 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Employee } from './employee';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
+
+  data: number;
+
+  setEmployeeFromSibling(id: number) {
+    this.data = id;
+  }
+
+  getEmployeeFromSibling(): number {
+    return this.data;
+  }
 
   private baseUrl = '/api/v1/employees';
 

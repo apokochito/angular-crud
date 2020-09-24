@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Employee } from './../employee';
 import { EmployeeService } from '../employee.service';
-import { EmployeeListComponent } from '../employee-list/employee-list.component';
 
 @Component({
   selector: 'app-employee-details',
@@ -10,11 +9,26 @@ import { EmployeeListComponent } from '../employee-list/employee-list.component'
 })
 export class EmployeeDetailsComponent implements OnInit {
 
-  @Input() employee: Employee;
+  employee: any = {};
+  submitted = false;
 
-  constructor(private employeeService: EmployeeService, private listComponent: EmployeeListComponent) { }
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
+    this.employeeService.getEmployee(this.employeeService.getEmployeeFromSibling()).subscribe(data => this.employee = data);
+  }
+
+  updateEmployee() {
+    this.employeeService.updateEmployee(this.employee._id, this.employee)
+    .subscribe(data => {
+      console.log("Employee Updated")
+    }, error => console.log(error));
+    this.employee = new Employee();
+  };
+
+  onSubmit() {
+    this.submitted = true;
+    this.updateEmployee();
   }
 
 }
