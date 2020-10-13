@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.4.
 
-## Backend side (Java with Spring)
+## Back-end side (Java with Spring)
 
 https://github.com/apokochito/server-side-angular-crud
 
